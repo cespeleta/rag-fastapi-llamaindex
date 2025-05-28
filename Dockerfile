@@ -28,7 +28,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-install-project --no-editable --no-dev
 
 # Copy the project into the intermediate image
-ADD . /app
+COPY . /app
 
 # Sync the project
 RUN --mount=type=cache,target=/root/.cache/uv \
