@@ -117,29 +117,6 @@ class RAGService:
         if self._prompt_template is None:
             raise QueryExecutionError("Prompt template is not loaded.")
 
-        # template = """
-        # You are a professional and objective assistant.
-        # Your goal is to provide answers based exclusively on the context provided.
-
-        # Here are the rules you must follow:
-        # 1. Analyze the context provided below to answer the user's question.
-        # 2. If the context contains the necessary information, formulate a clear and concise answer.
-        # 3. If the context does not contain the information to answer the question, you must state: "The provided context does not contain enough information to answer this question."
-        # 4. You must not use any external knowledge or information you were trained on. Your resopnse must be grounded in the provided text.
-        # 5. Do not make up information.
-
-        # Context:
-        # ---------------------
-        # { context_str }
-        # ---------------------
-
-        # Based only on the context above, please answer the following question.
-
-        # User's question: { query_str }
-
-        # Answer:
-        # """
-        # llm_prompt = PromptTemplate(template)
         llm_prompt = self._prompt_template.format(query_str=prompt)
 
         logger.info(f"Executing async query: '{prompt}'")
