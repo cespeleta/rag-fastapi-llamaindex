@@ -33,6 +33,9 @@ jobs:
         run: make lint.fix
 
       - name: Lint Check
+        run: make lint.check
+
+      - name: Type Check
         run: make type.check
 
       - name: Run Unit Tests with Coverage
