@@ -60,7 +60,7 @@ lint.fix: ## 💅 Format code and fix linting errors with Ruff
 	@echo ">>> Formatting code with Ruff..."
 	@uv run ruff format .
 	@echo ">>> Fixing linting errors with Ruff..."
-	@uv run ruff check --fix . --exit-non-zero-on-fix
+	@uv run ruff check --fix .
 	@echo ">>> Linting and formatting complete."
 
 .PHONY: lint.check
