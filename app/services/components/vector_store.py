@@ -8,6 +8,7 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
 from app.core.config.rag import RagServiceConfig
 from chromadb.api import ClientAPI
+from chromadb.config import Settings
 
 logger = getLogger(__name__)
 
@@ -29,7 +30,8 @@ class ChromaVectorStoreComponent:
         )
         Path.mkdir(self._config.vector_store_path, exist_ok=True, parents=True)
         self._client = chromadb.PersistentClient(
-            path=str(self._config.vector_store_path)
+            path=str(self._config.vector_store_path),
+            settings=Settings(anonymized_telemetry=False),
         )
         chroma_collection = self._client.get_or_create_collection(
             self._config.collection_name,
