@@ -1,0 +1,54 @@
+// Defines the development container configuration.
+{
+    "name": "RAG FastAPI Application.",
+    "dockerFile": "Dockerfile",
+    "features": {
+        "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {
+            "version": "0.7.6"
+        },
+        "ghcr.io/jsburckhardt/devcontainer-features/ruff:1": {},
+        "ghcr.io/prulloac/devcontainer-features/pre-commit:1": {},
+        "ghcr.io/dhoeric/features/hadolint:1": {},
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+            "version": "latest",
+            "dockerDashComposeVersion": "v2"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.pythonPath": "./venv/bin/python",
+                "python.formatting.provider": "none",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": false,
+                "python.linting.flake8Enabled": false,
+                "[python]": {
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit",
+                        "source.organizeImports": "explicit"
+                    }
+                },
+                "python.analysis.typeCheckingMode": "basic",
+                "python.analysis.autoSearchPaths": true,
+                "python.analysis.diagnosticMode": "workspace"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "ms-azuretools.vscode-docker",
+                "tamasfe.even-better-toml"
+            ]
+        }
+    },
+    "postCreateCommand": "uv sync --all-groups",
+    "forwardPorts": [
+        8000
+    ],
+    "containerEnv": {
+        "UV_LINK_MODE": "copy"
+    },
+    "remoteUser": "vscode"
+}
