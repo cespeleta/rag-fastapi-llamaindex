@@ -23,13 +23,13 @@ The core of the project is a RAG pipeline build with **LlamaIndex**, using **Hug
 
 Follow these steps to set up and run the application on your local machine.
 
-### 1. Clone the repository
+#### 1. Clone the repository
 
 ```bash
 git clone ...
 ```
 
-### 2. Configure environment variables
+#### 2. Configure environment variables
 
 ```bash
 cp .env.example .env
@@ -37,17 +37,17 @@ cp .env.example .env
 
 Edit the `.env` and add your `HF_TOKEN`.
 
-### 3. Install dependencies
+#### 3. Install dependencies
 
 ```bash
 make setup
 ```
 
-### 4. Add your documents
+#### 4. Add your documents
 
 Place any PDF file you want to query into the `./pdfs` directory.
 
-### 5. Run the application
+#### 5. Run the application
 
 The application will be available at `http://localhost:8000`. You can access the interactive documentation at `http://localhost:8000/docs`.
 
@@ -56,7 +56,7 @@ The application will be available at `http://localhost:8000`. You can access the
 
 The simplest way to run the appication is with Docker.
 
-### 1. Build the Docker Image
+#### 1. Build the Docker Image
 
 This command uses a multi-stage `Dockerfile` to build a production-ready image.
 
@@ -64,7 +64,7 @@ This command uses a multi-stage `Dockerfile` to build a production-ready image.
 make build.docker
 ```
 
-### 2. Run the Container
+#### 2. Run the Container
 
 This command starts the container in detached mode.
 
@@ -72,7 +72,7 @@ This command starts the container in detached mode.
 make run.docker
 ```
 
-### 3. Interact with the Container
+#### 3. Interact with the Container
 You can interact with the docker container with the following commands:
 * View logs: `make logs.docker`
 * Stop and Remove: `make stop.docker`
@@ -82,7 +82,7 @@ You can interact with the docker container with the following commands:
 
 Interact with the API via the documentation at `http://localhost:8000/docs` or using a tool like `curl`.
 
-### 1. Query the RAG System
+#### 1. Query the RAG System
 
 We create a request with the following prompt: `Give me a list of the data sources used for pre-training the Llama models.`
 
