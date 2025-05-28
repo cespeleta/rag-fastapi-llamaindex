@@ -2,7 +2,6 @@ SHELL := /bin/bash
 
 # Project variables
 PYTHON_INTERPRETER ?= python3.11
-VENV_DIR := .venv
 APP_NAME := rag-fastpi-app
 DOCKER_IMAGE_NAME ?= $(APP_NAME)
 DOCKER_IMAGE_TAG ?= latest
@@ -21,9 +20,9 @@ help: ## Show this help message
 # ==============================================================================
 
 .PHONY: setup
-setup: venv ## 📦 Install project dependencies using uv
+setup: ## 📦 Install project dependencies using uv
 	@echo ">>> Installing dependencies from pyproject.toml..."
-	@uv sync pyproject.toml --all-extras
+	@uv sync --all-groups
 	@echo ">>> Dependencies intalled."
 
 .PHONY: pre-commit-install
