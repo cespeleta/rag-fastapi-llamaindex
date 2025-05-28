@@ -1,7 +1,7 @@
 name: CI/CD Pipeline
 
 env:
-  SERVICE_NAME: rag-fastpi-app
+  APP_NAME: rag-fastpi-app
 
 on:
   push:
