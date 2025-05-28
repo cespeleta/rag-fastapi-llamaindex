@@ -1,0 +1,75 @@
+[project]
+name = "rag_fastapi_app"
+version = "0.1.0"
+description = "RAG System with FastAPI, LlamaIndex, HuggingFace and ChromaDB."
+authors = [ {name = "Carlos Espeleta"}, ]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "chromadb>=0.6.3",
+    "fastapi>=0.115.12",
+    "huggingface-hub[hf-xet]>=0.31.4",
+    "jinja2>=3.1.6",
+    "llama-index>=0.12.37",
+    "llama-index-embeddings-huggingface>=0.5.4",
+    "llama-index-llms-huggingface>=0.5.0",
+    "llama-index-vector-stores-chroma>=0.4.1",
+    "pydantic>=2.11.4",
+    "pydantic-settings>=2.9.1",
+    "uvicorn[standard]>=0.34.2",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pyright>=1.1.401",
+    "ruff>=0.11.10",
+]
+test = [
+    "pytest>=8.3.5",
+    "pytest-asyncio>=1.0.0",
+    "pytest-cov>=6.1.1",
+]
+
+[project.scripts]
+app = "app:main"
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+lint.select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "C",   # flake8-comprehensions
+    "B",   # flake8-bugbear
+    "Q",   # flake8-quotes
+    "ARG", # flake8-unused-arguments
+    "SIM", # flake8-simplify
+    "PTH", # flake8-use-pathlib
+    "ERA", # eradicate
+    "UP",  # pyupgrade
+    "RUF", # Ruff-specific rules
+]
+lint.ignore = [
+    "E501",   # Line too long, handled by formatter often
+    "B008",   # Do not perform function calls in argument defaults.
+    "ERA001"
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+addopts = "--cov-report term --cov-report xml:.test_results/coverage.xml --junitxml=.test_results/junit.xml"
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"

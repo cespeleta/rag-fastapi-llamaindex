@@ -1,0 +1,46 @@
+app_name: "rag-fastapi-app"
+
+api:
+  title: "RAG FastAPI System"
+  description: "RAG System with FastAPI, LlamaIndex, HuggingFace and ChromaDB."
+  version: "0.1.0"
+  prefix: "/api/v1"
+
+rag_service:
+  pdf_directory: "./pdfs"
+  vector_store_path: "./chromadb"
+  collection_name: "rag_documents"
+  # embed_model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  embed_model_name: BAAI/bge-base-en-v1.5
+  llm_model_name: google/gemma-3-1b-it
+  temperature: 0.1
+  max_new_tokens: 512
+  context_window: 4096
+  device_map: "auto"
+  template_dir: "./templates"
+  template_file: "qa_template.jinja2"
+
+logging:
+  version: 1
+  formatters:
+    simple:
+      format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    detailed:
+      format: "%(asctime)s - %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s"
+
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: DEBUG
+      formatter: simple
+      stream: ext://sys.stdout
+
+  loggers:
+    app:
+      level: DEBUG
+      handlers: [console]
+      propagate: no
+
+  root:
+    level: INFO
+    handlers: [console]
