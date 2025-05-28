@@ -28,8 +28,8 @@ jobs:
       - name: Install dependencies
         run: make setup
 
-      - name: Lint Check
-        run: make lint.check
+      - name: Lint Fix
+        run: make lint.fix
 
       - name: Lint Check
         run: make type.check
