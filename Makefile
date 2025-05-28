@@ -1,12 +1,10 @@
 SHELL := /bin/bash
 
 # Project variables
-PYTHON_INTERPRETER ?= python3.11
 APP_NAME := rag-fastpi-app
 DOCKER_IMAGE_NAME ?= $(APP_NAME)
 DOCKER_IMAGE_TAG ?= latest
 APP_DIR = app
-TEST_DIR = tests
 
 
 .PHONY: help
