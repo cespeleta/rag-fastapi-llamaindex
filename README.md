@@ -4,6 +4,8 @@ This project provides a complete, production-ready Retrieval Augmented Generatio
 
 The core of the project is a RAG pipeline build with **LlamaIndex**, using **HuggingFace** models for document embedding and LLM's, and **ChromaDB** as the local vector store.
 
+The default PDF document that comes by default with the application is: [LLaMA: Open and Efficient Foundation Language Models](https://arxiv.org/abs/2302.13971)
+
 ## Project structure
 
 ```shell
@@ -26,7 +28,7 @@ Follow these steps to set up and run the application on your local machine.
 #### 1. Clone the repository
 
 ```bash
-git clone ...
+git clone git@github.com:cespeleta/rag-fastapi-llamaindex.git
 ```
 
 #### 2. Configure environment variables
@@ -81,6 +83,8 @@ You can interact with the docker container with the following commands:
 ## Usage
 
 Interact with the API via the documentation at `http://localhost:8000/docs` or using a tool like `curl`.
+
+![alt Amazon Fine Good Reviews Dataset Preview](resources/fastapi-endpoint.jpg)
 
 #### 1. Query the RAG System
 
