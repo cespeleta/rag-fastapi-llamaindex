@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: .test_results/
+          path: .test_results/coverage.xml
 
       - name: Dockerfile Check
         uses: hadolint/hadolint-action@v3.1.0
